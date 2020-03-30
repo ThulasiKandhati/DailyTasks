@@ -1,0 +1,24 @@
+import sqlparse
+parsed = sqlparse.parse('select a from foo where 1=2')[0]
+print(parsed.tokens)
+
+def exclusion_in_select(psql):
+    sql = psql.split(' ')
+    ind = sql.index("'col'")
+    for i in range(ind-1,-1,-1):
+        if sql[i].isupper() and sql[i] != 'SELECT':
+            return False
+    for i in range(ind+1,len(sql)):
+        if sql[i].isupper() and sql[i] != 'FROM':
+            return False
+    return True
+
+
+
+
+
+
+
+first = str("select a,'col' b, c from foo where 1=2").lower()
+print(sqlparse.format(first, reindent=True, keyword_case='upper').replace('\n', ' '))
+print(get_exclusion(sqlparse.format(first, reindent=True, keyword_case='upper').replace('\n', ' ')))
