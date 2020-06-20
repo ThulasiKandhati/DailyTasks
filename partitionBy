@@ -1,0 +1,23 @@
+drop table xxemp;
+create table xxemp(
+id number,
+name varchar2(100),
+sal number,
+deptid number,
+locid number);
+
+insert into xxemp values(1, 'Tul', 100, 0,0);
+insert into xxemp values(2, 'Tul', 0, 10,0);
+insert into xxemp values(3, 'Tul', 0, 0,1000);
+
+select distinct name,
+sum(sal)  OVER(
+        PARTITION BY name
+    ) AS salary,
+sum(deptid)  OVER(
+        PARTITION BY name
+    ) AS deptid,
+sum(locid)  OVER(
+        PARTITION BY name
+    ) AS locid    
+from xxemp;
