@@ -1,0 +1,74 @@
+
+ 
+ 
+ High level phases to migrate Campaign management capability to Snowflake
+
+  
+  MOBILIZATION
+  AND PLATFORM BUILD-OUT By May 2020
+
+
+  
+  üIdentify 3 pilot campaigns to run against Snowflake
+  in Q3
+
+  üSetup Snowflake platform 
+
+  üCreate reusable frameworks
+
+  
+  
+  
+  DATA
+  ANALYSIS AND DESIGN
+
+
+  By June 2020
+
+
+  
+  üAnalysis for data requirements
+
+  üDesign and data modeling for low latency
+
+  
+  
+  
+  DATA
+  INGESTION AND ENRICHMENT
+
+
+  Mid-Apr to
+  Q3 2020
+
+
+  
+  üSource data from source systems 
+
+  üEnrich datasets for campaign management 
+
+  üBuild campaign management data mart 
+
+  ü
+
+  
+  
+  CAMPAIGN
+  MANAGEMENT ON-BOARDING Q2-Q4 2020
+
+
+  
+  ØIntegrate and onboard data to new campaign tool
+  using Snowflake 
+
+  ØCampaign Managers training on snowflake
+
+  ØExecute pilot campaigns on Snowflake
+
+  ØCI/CD pipelines
+
+  Ø
+
+  
+ 
+
