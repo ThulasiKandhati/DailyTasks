@@ -65,10 +65,26 @@
 
   ØExecute pilot campaigns on Snowflake
 
+
   ØCI/CD pipelines
 
   Ø
+  
+  Generic batch ingestion 
+  
 
+  Metadata Driven Data Movement Framework:
+  This metadata driven framework will help Moveing data seemlesly between tables and across schemas with transformation.Below are the benifits.
+  No coding knowledge needed.
+  Quick deployment of the feed.
+  Generic and reusable.
+  Feed Level auditing, Logging and Lineage.
+  Maintians History of processed data.
+  Metadata driven flow.
+  Automated/Custom Transformation.
+  Re-runability of jobs.
+  Reject reload processing.
+  
   
  
 
