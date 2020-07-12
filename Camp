@@ -69,11 +69,13 @@
   ØCI/CD pipelines
 
   Ø
-  
-  Generic batch ingestion 
-  
+  Migrating Data from Onprem warehouse to AWS managed service snowflake
+  Below are the 2 frameworks that helped in this project.
+  => Generic batch ingestion 
+     fully automated serverless solution Migrates the file from onprem to snowflake landing.
+     services: S3 AWS Batch Lambda step function SNS SQS 
 
-  Metadata Driven Data Movement Framework:
+  => Metadata Driven Data Movement Framework:
   This metadata driven framework will help Moveing data seemlesly between tables and across schemas with transformation.Below are the benifits.
   No coding knowledge needed.
   Quick deployment of the feed.
