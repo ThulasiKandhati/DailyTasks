@@ -1,0 +1,42 @@
+Best Practises:
+INTRO: 
+Amazon RDS(managed database service):pay/hr
+ Amazon RDS makes it easy to set up,
+operate, and scale a relational database in the cloud by automating installation,
+disk provisioning and management, patching, minor version upgrades, failed
+instance replacement, as well as backup and recovery tasks.
+
+=> charged per hour. can save on non business hours.
+=> you can resize the instance based on your needs.
+=> You can configure CPU cores and threds per core.
+=> you can also Bring Your Own License.
+=> configurable network security.
+
+Running the database on Amazon EC2 is very similar to running the database on your own server.
+  set up, configure, manage, and tune all the components,including Amazon EC2 instances, storage volumes, scalability, networking, and
+security, based on AWS architecture best practices.
+
+why you choose EC2:
+You need full control over the database, including SYS/SYSTEM user access, or you need access at the operating system level.
+Your database size exceeds the 80% of current maximum database size in Amazon RDS.(which is not the case as per RFI)
+Oracle features or options not supported in RDS (should suffice).
+Your database IOPS needs are higher than the current IOPS limit.(not the case).
+You need a specific Oracle Database version that is not supported by Amazon RDS(not the case).
+If want to use your data replication tool than aws supported.
+RAC is not currently supported on AWS RDS.VMware Cloud on AWS might be a better choice
+
+
+https://d1.awsstatic.com/whitepapers/best-practices-for-running-oracle-database-on-aws.pdf
+
+
+Srategies:
+— The size of the database
+— Network connectivity between the source server and AWS
+— The version and edition of your Oracle Database software
+— The database options, tools, and utilities that are available
+— The amount of time that is available for migration
+— Whether the migration and switchover to AWS will be done in one step or a Two-Step.
+
+Tools helpfull to migrate data based on the size of the data and environemnt.
+
+https://d1.awsstatic.com/whitepapers/strategies-for-migrating-oracle-database-to-aws.pdf
