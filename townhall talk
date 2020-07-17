@@ -1,0 +1,29 @@
+Today i am gona talk about the reusable frameworks that was developed to speed up the data migration.
+=> 2 framworks are
+1) Data ingestion framework.
+2) Data Movement framwrok.
+
+let eme talk about Data ingestion framework.
+This framework moves data feed files from on prem to aws s3 and then to snowflake landing area.
+in order to use this framework ,
+we need to upload the config file with the details in it like s3 bucket name, target table with database and schema, file format, delimiter and another information.
+once this config file is ready we can then passs this as a parmeter to client python SDK that then takes care of moving the file.
+monitoring id done on cloudwatch with few alarms set like if there is any filure you will get a mail.
+This is the fully serverless architecture.if call this sdk and file name and config file as a param.The data will be transformed and loaded in minutes.
+
+services used here are : python SDK as a scripting language ,
+                          s3 ,
+                          lambda,
+                          step function.
+                          batch,
+                          SNS,
+                          SQS.
+Data Movement Framework: Now, with data ingestion data is already avialble in snowflake. 
+There will a obvious requirment to migrate dat from one database or schema to another. 
+then this framework helps you to migrate data from one database to schema with little transformation and can join with another tables to pull data.
+This is completely metadata driven. when i say metadata driven. it has set of tables that need to be populated with the highest attribute as job name.
+this jobname is used to invoke the data movement from control m .
+This is very efficient framework when you have high workloads and less time.
+
+
+these frameworks helping us to migrate data to SF warehouse sooner.
