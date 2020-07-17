@@ -82,3 +82,73 @@ emp.xml
      <Name>saanvi</Name>
      
  grep Name emp.xml|awk -F\> '{ print $2 }' | sed -e 's/\<.*//'
+ -- not working. please check
+
+if your file is space seperated 
+a 1 1000
+b 2 2000
+ta 21 21000
+aa 28 28000
+ba 29 29000
+
+
+ awk '{print $1}' space.txt
+ $0 --prints the whole line.
+ $1,n prints the corresponding column.
+ can also display multiple columns
+ There is out of index error.
+ 
+ awk '/a/ {print $1,$2}' space.txt 
+ --pattren matching lines that matches a.
+ awk '/^a/ {print $0}' space.txt
+ --pattren lines that statrs with a.Doesnot apply on print column only on the first line.
+  awk '{print $1,$2,$3/1000"K"}' space.txt
+  -- you can do transformation as well.and concat 
+  awk '/a/ && $2 > 1 {print $1,$2,$3/1000"K"}' space.txt
+  --> filter conditions.
+  move the core logic to file and run as a command.
+  awk -f space15k.awk space.txt
+  vi space15k.awk
+  /a/ && $2 > 1 {print $1,$2,$3/1000"K"}
+  ----
+  
+paste both the lines.results will prited independently.
+/a/ && $2 > 1 {print $1,$2,$3/1000"K"}
+/a/ && $2 > 28 {print $1,$2,$3/1000"K"}
+
+/a/ && $2 > 1 {print $1,$2,$3/10000"NONINT",int($3/10000)"INT"}
+removing the decimals using int.
+this is truncating the values.can we write a function to round the numbers.
+
+func round(n){
+n = n+0.5
+return int(n)
+}
+/a/ && $2 > 1 {print $1,$2,$3/10000"NONINT",int($3/10000)"INT",round($3/10000)"ROUNDINT"}
+
+
+loops in awk:
+numbers.txt
+1
+3
+6
+8
+12
+
+loop.awk
+func printlist(n){
+    for(i=1;i<=n;i++){
+    printf("%d ",i)
+    }
+    printf("\n")
+}
+
+{print printlist($1)}
+
+awk -f loop.awk numbers.txt
+
+
+  
+  
+ 
+ 
