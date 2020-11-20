@@ -1,0 +1,26 @@
+Source: youtube Neso Academy
+Operating systems vary in thier makeup internally.
+Commanlities:
+  1) Multiprogramming
+  2) Time sharing (Multitasking).
+
+1) Multiprogramming.
+    A single user cannot keep the CPU or the I/O device busy all the time.
+    Multiprogramming increasses CPU utilization by organizing jobs(code and data) so that CPU has one to execute.
+      execute from the job pool.
+      effecientley using CPU. when a job is ideal with some I/O operation picks ups another job.
+    Conclude: multiprogramming system will use the system resources CPU, memory and pheripheral devices utilized effectively 
+    
+2) MultiTasking.(TIme Sharing)
+   MultiTasking executes multiple jobs by switcjing among them.(users are slower than system).
+   Switches occur so frequently that users can intercat with each program while it is running.
+   Time sharing requires a interactive (or hands on) computer system.
+   which provides direct communication between user and the system.
+   Time sharing operating system allows multiple users to share the computer simultaneously.
+   switiching between users happens so quickly that they donot realise that the user thinks entire system belongs to him.
+      uses CPU scheduling to provide wach user with a small portion of time-shared computer
+      Each user has a single separate program loaded into memory.
+      A program loaded into memory and executing is called processes.
+      
+      
+   
