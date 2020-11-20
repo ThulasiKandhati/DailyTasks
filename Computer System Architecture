@@ -1,0 +1,28 @@
+Source : Youtube Neso Academy
+=> Types of systems based on general purpose based processes.
+1 Single processes systems.
+2. Multiproces Processes Systems.
+3. Clustered systems.
+
+1. Single processes system:
+    a single processes capable of executing general purpose instruction set including instruction from the user processes.
+    other special purpose processes also present to perform the device sepecific task. like keyboard. (Keystroke to binary code).
+ 
+2. Multi Processes Systems:
+   (Parllel systems or tightly coupled systems).
+  Has two or more processes in close communication sharing the computer bus and sometimes the clock, memory and pheripheral devices.
+  
+  Advantages:
+     => increased throughput.
+     => economy of scale.
+     => Increased reliability.
+  Types of multiprocess systems:
+     2.1 Symettric multiprocessing
+          All the processors are same. and share the worload themselves.
+     2.2 Asymmetric multiprocessing
+          This is master slave approch. Master assigns tasks.
+3. Clustered systems.
+      Like multiprocess system,  Clustered system gather together multiple cpu to accomplish the computational work.
+      They are composed on 2 or more individual systems coupled together.
+      provides high availablity.
+      can be structured symmetrically(two or more run application and others monitor) or asymmetrically(one machine hot standby and others run application).
