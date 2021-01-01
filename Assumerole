@@ -1,0 +1,94 @@
+create user and iam role . This step to perform by the admin.
+
+create user
+aws iam create-user --user-name test-user
+
+create a access keys.
+aws iam create-access-key --user-name test-user
+
+create a policy and attach to the user.
+allow user to list ec2 ,sts assume role 
+
+aws iam create-policy --policy-name test-policy --policy-document file://test-policy.json
+
+aws iam attach-user-policy --user-name test-user --policy-arn "arn:aws:iam::470143904675:policy/test-policy"
+
+verify policy attached to user.
+
+aws iam list-attached-user-policies --user-name test-user
+
+now, we will create role that can be assumed by test-user.
+
+aws iam create-role --role-name test-role --assume-role-policy-document file://test-role-trust-policy.json
+
+attach aws readonly RDS policy to the test-role.
+aws iam attach-role-policy --role-name test-role --policy-arn "arn:aws:iam::aws:policy/AmazonRDSReadOnlyAccess"
+
+policy has been sucessfully attached to the role.
+aws iam list-attached-role-policies --role-name test-role
+
+now the test-user and test-role is ready, lets test this in the new ec2 terminal.
+aws configure to configure the test user.
+
+aws sts get-caller-identity
+
+describe ec2 instance.
+aws ec2 describe-instances --query "Reservations[*].Instances[*].[VpcId, InstanceId, ImageId, InstanceType]"
+
+we will confirm this user donot have access to rds.
+aws rds describe-db-instances --query "DBInstances[*].[DBInstanceIdentifier, DBName,DBInstanceStatus, AvailabilityZone, DBInstanceClass]"
+
+Now, assume the test-role.
+
+aws sts assume-role --role-arn "arn:aws:iam::470143904675:role/test-role" --role-session-name AWSCLI-Session
+this will give you aws keys, secret, session with the valid time stamp
+
+export AWS_ACCESS_KEY_ID=XXXXX
+export AWS_SECRET_ACCESS_KEY=XXXX
+export AWS_SESSION_TOKEN=FwoGZXIvYXdzEP7//////////wEaDBpsafN3BI5eTzSWxyKyAbBrIsyHEBq4cWWnTTW6IRAr77nz
+
+now you are in the test role. where you have rds access not the ec2.
+aws sts get-caller-identity
+
+
+unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN
+
+Quicker way to switch roles.
+
+.aws/config
+
+[profile test-role-profile]
+role_arn = arn:
+source_profile = default
+region = xxx
+
+this will assume
+aws sts get-caller-identity --profile test-role-profile
+
+
+file content:
+==========
+test-policy.json
+{
+"Version": "2012-10-17",
+"Statement": [
+{
+"Effect": "Allow",
+"Action": [
+      "ec2:Describe*",
+      "iam:ListRoles",
+      "sts:AssumeRole"
+      ],
+     "Resource": "*"
+}
+]
+}
+test-role-trust-policy.json
+{
+"Version": "2012-10-17",
+"Statement": {
+          "Effect": "Allow",
+          "Principal": {"AWS": "arn:aws:iam::470143904675:root"},
+         "Action": "sts:AssumeRole"
+}
+}
